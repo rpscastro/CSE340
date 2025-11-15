@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Noto+Serif:wght@300&display=swap');
 
+main {
+  font-family: 'Lato',
+    Helvetica,
+    sans-serif;
+}
+
 /******* Change Box Model ***************/
 *,
 *:before,
@@ -27,11 +33,18 @@ nav ul li {
 
 }
 
-nav ul li:hover {
+nav ul li:hover,
+nav ul li:hover a {
 
   background-color: #B6B6BD;
   color: black;
 
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 
@@ -73,8 +86,13 @@ header {
 
 
 /********** Footer ***********/
+footer {
+  font-family: 'Lato',
+    Helvetica,
+    sans-serif;
+}
+
 footer p {
-  font-family: 'Lato', Helvetica, sans-serif;
   font-weight: bold;
 }
 
@@ -146,6 +164,68 @@ footer p {
 #reviews-section ul li {
   margin-bottom: 20px;
 
+}
+
+
+/************************ Inventory Page *******************/
+
+#inv-display {
+
+  list-style-type: none;
+  padding-left: 0;
+
+}
+
+#inv-display li {
+  color: #263D92;
+  background-color: #ffffff;
+  text-align: center;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px #333;
+
+}
+
+#inv-display li h2 {
+  margin: 10px;
+}
+
+#inv-display li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+#inv-display li a:hover {
+  color: blue;
+}
+
+
+#inv-display li a img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+
+/*************** Details Page ******************/
+
+.label {
+  font-weight: bold;
+  margin-left: 15px;
+  color: black;
+}
+
+.vehicle-info h3,
+.vehicle-info p {
+  color: black;
+  margin-left: 15px;
+}
+
+.vehicle-image picture img {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
 }
 
 /********** Large Screens ***********/
@@ -227,4 +307,18 @@ footer p {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
   }
+
+  #inv-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+  }
+
+  #vehicle-details {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
 }

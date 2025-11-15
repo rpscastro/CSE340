@@ -6,7 +6,7 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  let list = "<ul>"
+  let list = '<ul id="nav">'
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
     list += "<li>"
@@ -56,6 +56,31 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+/* **************************************
+* Build the details view HTML
+* ************************************ */
+Util.buildDetailsGrid = async function (data) {
+  let vehicle = data[0]
+  let grid
+      grid = '<div id="vehicle-details">'
+      grid += '<div class="vehicle-image">'
+      grid +=  '<picture><source media="(min-width: 700px)" srcset="'+ vehicle.inv_image +'">'  
+      + '<img src="'+ vehicle.inv_image +'" loading="lazy" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
+      +' on CSE Motors"</picture >  </div>'
+      grid += '<div class="vehicle-info">'
+      grid += '<h2>'+ vehicle.inv_make + ' ' + vehicle.inv_model + ' Details </h2>'
+      grid += '<hr />'
+  grid += ' <p><span class="label">Price: </span>$' + Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</p>'
+  grid += ' <p><span class="label">Description: </span>' + vehicle.inv_description + '</p>'
+  grid += ' <p><span class="label">Color: </span>' + vehicle.inv_color + '</p>'
+  grid += ' <p><span class="label">Miles: </span>' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</p>'
+      grid += '</div>'
+      grid += '</div>'
+
+  return grid
+}
+
 
 /* ****************************************
  * Middleware For Handling Errors

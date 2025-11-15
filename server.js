@@ -31,6 +31,10 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes
 app.use("/inv", inventoryRoute)
 
+//Error testing route
+app.get("/error", utilities.handleErrors(baseController.errorTesting))
+
+
 /* ***********************
 * File Not Found Route - must be last route in list
 * Place after all other routes
@@ -51,7 +55,7 @@ app.use(async (err, req, res, next) => {
     title: err.status || 'Server Error',
     message,
     nav
-  })
+  }) 
 })
 
 /* ***********************
