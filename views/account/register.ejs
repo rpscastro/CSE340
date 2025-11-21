@@ -16,13 +16,13 @@
                 <form class="register-form" action="/account/register" method="post"
                     onsubmit="return validatePassword()">
                     <label for="first-name">First name</label>
-                    <input type="text" id="account_firstname" name="account_firstname" required />
+                    <input type="text" id="account_firstname" name="account_firstname" required value="<%= locals.account_firstname %>"/>
 
                     <label for="last-name">Last name</label>
-                    <input type="text" id="account_lastname" name="account_lastname" required />
+                    <input type="text" id="account_lastname" name="account_lastname" required value="<%= locals.account_lastname %>" />
 
                     <label for="email">Email address</label>
-                    <input type="email" id="account_email" name="account_email" required
+                    <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>"
                         placeholder="Enter a valid email address" />
 
                     <label for="password">Password</label>
