@@ -230,22 +230,13 @@ footer p {
 
 /****Login Page**********************/
 
-/* styles.css */
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-} */
-
 .login-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+
 }
 
-.login-form {
+#loginForm {
   background-color: #fff;
   padding: 30px 40px;
   border-radius: 8px;
@@ -253,18 +244,18 @@ footer p {
   width: 300px;
 }
 
-.login-form h2 {
+#loginForm h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.login-form label {
+#loginForm label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.login-form input {
+#loginForm input {
   width: 100%;
   padding: 8px;
   margin-bottom: 15px;
@@ -272,7 +263,7 @@ footer p {
   border-radius: 4px;
 }
 
-.login-form button {
+#loginForm button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -283,7 +274,7 @@ footer p {
   cursor: pointer;
 }
 
-.login-form button:hover {
+#loginForm button:hover {
   background-color: #0056b3;
 }
 
@@ -302,21 +293,19 @@ footer p {
   text-decoration: underline;
 }
 
-/***Register Page********************/
+.field-requirements {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 15px;
+  font-style: italic;
+}
 
-/* styles.css */
-/* body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-} */
+
+/***Register Page********************/
 
 .register-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 .register-form {
@@ -379,11 +368,66 @@ footer p {
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .register-form button[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+
+/***Add Classification Page********************/
+
+.add-classification-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-classification-form {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+}
+
+.add-classification-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-classification-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-classification-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+.add-classification-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-classification-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
 
 /********** Large Screens ***********/
 

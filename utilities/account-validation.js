@@ -6,7 +6,7 @@ const accountModel = require("../models/account-model");
 /*  **********************************
  *  Registration Data Validation Rules
  * ********************************* */
-validate.registationRules = () => {
+validate.registrationRules = () => {
   return [
     // firstname is required and must be string
     body("account_firstname")
@@ -78,7 +78,6 @@ validate.checkRegData = async (req, res, next) => {
   next();
 };
 
-
 /*  **********************************
  *  Registration Data Validation Rules
  * ********************************* */
@@ -97,7 +96,9 @@ validate.loginRules = () => {
           account_email
         );
         if (!emailExists) {
-          throw new Error("Email doesn't exist in our database. Please check your email");
+          throw new Error(
+            "Email doesn't exist in our database. Please check your email"
+          );
         }
       }),
 
@@ -115,7 +116,6 @@ validate.loginRules = () => {
       .withMessage("Password does not meet requirements."),
   ];
 };
-
 
 /* ******************************
  * Check data and return errors or continue to login
@@ -136,9 +136,5 @@ validate.checkLoginData = async (req, res, next) => {
   }
   next();
 };
-
-
-
-
 
 module.exports = validate;
