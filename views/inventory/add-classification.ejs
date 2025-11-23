@@ -14,14 +14,13 @@
 
             <div class="add-classification-container">
                 <form class="add-classification-form" action="/inv/add-classification" method="post">
-                    <label for="classification-name">Classification name</label>
+                    <label for="classification_name">Classification name</label>
                     <input type="text" id="classification_name" name="classification_name" required
-                        pattern="^[A-Za-z]+$"
-"                     value="<%= locals.classification_name %>" />
-                        <p class="field-requirements">
-                            * Name must be alphabetic characters only
-                        </p>
+                        pattern="^[A-Za-z]+$" value="<%= locals.classification_name %>" />
+                    <p class="field-requirements">
+                        * Name must be alphabetic characters only
+                    </p>
 
-                        <button type="submit">Register</button>
+                    <button type="submit">Add Classification</button>
                 </form>
             </div>
