@@ -574,6 +574,82 @@ footer p {
   color: white;
 }
 
+/***Edit Inventory Page********************/
+
+.delete-inventory-container {
+  display: flex;
+  justify-content: center;
+}
+
+.delete-inventory-form {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+}
+
+.delete-inventory-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.delete-inventory-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.delete-inventory-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.delete-inventory-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.delete-inventory-form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+.delete-inventory-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-inventory-form button[type="submit"]:hover {
+  background-color: #B6B6BD;
+  color: black;
+}
+
+.delete-inventory-form button[type="submit"]:disabled {
+  background-color: #B6B6BD;
+  color: white;
+}
+
+
+
 /********** Large Screens ***********/
 
 @media only screen and (min-width: 38rem) {

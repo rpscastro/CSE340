@@ -53,7 +53,7 @@ router.get(
   utilities.handleErrors(invController.getInventoryJSON)
 );
 
-// Route to show inventory item detail view
+// Route to show inventory item edit view
 router.get(
   "/edit/:invId",
   utilities.handleErrors(invController.buildEditInventory)
@@ -65,6 +65,19 @@ router.post(
   invValidate.addInventoryRules(),
   invValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory)
+);
+
+// Route to show inventory item delete view
+router.get(
+  "/delete/:invId",
+  utilities.handleErrors(invController.buildDeleteInventory)
+);
+
+
+// Process the Delete Inventory atempt
+router.post(
+  "/delete-inventory",
+  utilities.handleErrors(invController.deleteInventory)
 );
 
 module.exports = router;
