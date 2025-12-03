@@ -150,5 +150,20 @@ async function buildManagement(req, res, next) {
 };
 
 
+/* ***************************
+ *  Build Edit Account view
+ * ************************** */
+async function buildEditAccount(req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("./account/edit-account", {
+    title: "Edit Account",
+    nav,
+    errors: null,
+  });
+};
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement };
+
+
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildManagement, buildEditAccount };

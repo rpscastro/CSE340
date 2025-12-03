@@ -377,6 +377,117 @@ footer p {
 }
 
 
+/***Edit Account Page********************/
+
+.edit-account-container {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-account-form {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+}
+
+.edit-account-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-account-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.edit-account-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-account-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.edit-account-form button[type="submit"]:hover {
+  background-color: #B6B6BD;
+  color: black;
+}
+
+
+/***Edit Account Page - Password********************/
+
+#password-update-title {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.password-update-container {
+  display: flex;
+  justify-content: center;
+}
+
+.password-update-form {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+}
+
+.password-update-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.password-update-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.password-update-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.password-update-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.password-update-form button[type="submit"]:hover {
+  background-color: #B6B6BD;
+  color: black;
+}
+
+
+
+
 /***Add Classification Page********************/
 
 .add-classification-container {

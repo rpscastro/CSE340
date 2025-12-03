@@ -37,5 +37,9 @@ router.get(
   utilities.checkLogin,
   utilities.handleErrors(accountController.buildManagement));
 
-
+// Route to Edit Account view
+router.get(
+  "/edit",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildEditAccount));
 module.exports = router;
