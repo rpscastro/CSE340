@@ -14,29 +14,30 @@
 
             <div class="edit-account-container">
                 <form class="edit-account-form" action="/account/edit" method="post">
-                    <label for="first-name">First name</label>
+                    <label for="account_firstname">First name</label>
                     <input type="text" id="account_firstname" name="account_firstname" required
                         value="<%= locals.accountData.account_firstname %>" />
 
-                    <label for="last-name">Last name</label>
+                    <label for="account_lastname">Last name</label>
                     <input type="text" id="account_lastname" name="account_lastname" required
                         value="<%= locals.accountData.account_lastname %>" />
 
-                    <label for="email">Email address</label>
+                    <label for="account_email">Email address</label>
                     <input type="email" id="account_email" name="account_email" required
                         value="<%= locals.accountData.account_email %>" placeholder="Enter a valid email address" />
 
-                        <input type="hidden" name="account_id" <% if(locals.accountData.account_id) { %> value="<%= locals.accountData.account_id %>"
-                            <% } %>>
+                    <input type="hidden" name="account_id" <% if(locals.accountData.account_id) { %> value="<%=
+                        locals.accountData.account_id %>"
+                        <% } %>>
 
-                    <button type="submit">Account Update</button>
+                            <button type="submit">Account Update</button>
                 </form>
             </div>
-            <h3 id="password-update-title">Update Password</h3>
+            <h2 id="password-update-title">Update Password</h2>
             <div class="password-update-container">
                 <form class="password-update-form" action="/account/password-change" method="post">
 
-                    <label for="password">Password</label>
+                    <label for="account_password">Password</label>
 
                     <div class="password-wrapper">
 
@@ -51,6 +52,6 @@
                     <input type="hidden" name="account_id" <% if(locals.accountData.account_id) { %> value="<%=
                         locals.accountData.account_id %>"
                         <% } %>>
-                    <button type="submit">Change Password</button>
+                            <button type="submit">Change Password</button>
                 </form>
             </div>

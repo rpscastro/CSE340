@@ -28,21 +28,22 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
-  utilities.handleErrors(accountController.accountLogin)  
+  utilities.handleErrors(accountController.accountLogin)
 );
-
 
 // Route to show management view
 router.get(
   "/",
   utilities.checkLogin,
-  utilities.handleErrors(accountController.buildManagement));
+  utilities.handleErrors(accountController.buildManagement)
+);
 
 // Route to Edit Account view
 router.get(
   "/edit",
   utilities.checkLogin,
-  utilities.handleErrors(accountController.buildEditAccount));
+  utilities.handleErrors(accountController.buildEditAccount)
+);
 module.exports = router;
 
 // Process the Edit Account attempt
@@ -58,13 +59,13 @@ module.exports = router;
 // Process the Edit Account attempt
 router.post(
   "/password-change",
+  utilities.checkLogin,
   regValidate.changePasswordRules(),
+  regValidate.checkPasswordData,
   utilities.handleErrors(accountController.changePassword)
 );
 
 //Process the Logout request
-router.get("/logout",
-  utilities.handleErrors(accountController.accountLogout)
-);
+router.get("/logout", utilities.handleErrors(accountController.accountLogout));
 
 module.exports = router;

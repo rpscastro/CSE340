@@ -224,4 +224,24 @@ validate.checkUpdateData = async (req, res, next) => {
   next();
 };
 
+/* ******************************
+ * Check password data and return errors or continue to change password
+ * ***************************** */
+validate.checkPasswordData = async (req, res, next) => {
+  const { account_password } = req.body;
+  let errors = [];
+  errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("account/edit-account", {
+      errors,
+      title: "Edit Account",
+      nav,
+      account_password,
+    });
+    return;
+  }
+  next();
+};
+
 module.exports = validate;
