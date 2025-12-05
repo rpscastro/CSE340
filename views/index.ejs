@@ -1,6 +1,15 @@
 <div id="indexPage">
     <h1>Welcome to CSE Motors!</h1>
     <%- messages() %>
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
     <div id="home">
         <div id="highlight">
             <div id="car-card">

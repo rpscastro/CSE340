@@ -26,13 +26,15 @@
                     <input type="email" id="account_email" name="account_email" required
                         value="<%= locals.accountData.account_email %>" placeholder="Enter a valid email address" />
 
+                        <input type="hidden" name="account_id" <% if(locals.accountData.account_id) { %> value="<%= locals.accountData.account_id %>"
+                            <% } %>>
 
                     <button type="submit">Account Update</button>
                 </form>
             </div>
             <h3 id="password-update-title">Update Password</h3>
             <div class="password-update-container">
-                <form class="password-update-form" action="/account/edit" method="post">
+                <form class="password-update-form" action="/account/password-change" method="post">
 
                     <label for="password">Password</label>
 
@@ -46,6 +48,9 @@
                         * Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1
                         special character
                     </p>
+                    <input type="hidden" name="account_id" <% if(locals.accountData.account_id) { %> value="<%=
+                        locals.accountData.account_id %>"
+                        <% } %>>
                     <button type="submit">Change Password</button>
                 </form>
             </div>
