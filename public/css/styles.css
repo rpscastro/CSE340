@@ -760,6 +760,67 @@ footer p {
 }
 
 
+/***Add Favorite Page********************/
+
+.add-favorite-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-favorite-form {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+}
+
+.add-favorite-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-favorite-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-favorite-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-favorite-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.add-favorite-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.add-favorite-form button[type="submit"]:hover {
+  background-color: #B6B6BD;
+  color: black;
+}
+
+
+
 
 /********** Large Screens ***********/
 

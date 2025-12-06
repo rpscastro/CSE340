@@ -32,6 +32,7 @@ invCont.buildByInvId = async function (req, res, next) {
     title: invName,
     nav,
     grid,
+    errors: null,
   });
 };
 
@@ -315,6 +316,103 @@ invCont.deleteInventory = async function (req, res, next) {
       inv_model,
       inv_year,
       inv_price,
+    });
+  }
+};
+
+/* ***************************
+ *  Build Favorites view
+ * ************************** */
+invCont.buildFavoritesView = async function (req, res, next) {
+  const account_id = res.locals.accountData.account_id;
+  const data = await invModel.getFavoritesList(account_id);
+  const grid = await utilities.buildFavoritesGrid(data);
+  let nav = await utilities.getNav();
+
+  res.render("./inventory/favorites", {
+    title: "Favorite vehicles",
+    nav,
+    grid,
+    errors: null,
+  });
+};
+
+/* ***************************
+ *  Build Add Favorites view
+ * ************************** */
+invCont.addToFavoritesPage = async function (req, res, next) {
+  const account_id = res.locals.accountData.account_id;
+  const inv_id = parseInt(req.params.invId);
+  const check = await invModel.checkFavoriteExists(account_id, inv_id);
+  let nav = await utilities.getNav();
+  const data = await invModel.getDetailsByInvId(inv_id);
+  if (check) {
+    req.flash("notice", "This item is already in your favorites.");
+    const grid = await utilities.buildDetailsGrid(data);
+    const invName = `${data[0].inv_year} ${data[0].inv_make} ${data[0].inv_model}`;
+    res.render("./inventory/details", {
+      title: invName,
+      nav,
+      grid,
+      errors: null,
+    });
+  } else {
+    item = data[0];
+    res.render("./inventory/add-favorite", {
+      title: "Add favorite vehicle",
+      nav,
+      inv_id: item.inv_id,
+      inv_make: item.inv_make,
+      inv_model: item.inv_model,
+      inv_image: item.inv_image,
+      favorite_note: "",
+      account_id: account_id,
+      errors: null,
+    });
+  }
+};
+
+/* ****************************************
+ *  Process Add to Favorites Atempt
+ * *************************************** */
+invCont.addToFavoritesProcess = async function (req, res) {
+  let nav = await utilities.getNav();
+  const { account_id, inv_id, favorite_note } = req.body;
+
+  const regResult = await invModel.addFavorite(
+    account_id,
+    inv_id,
+    favorite_note
+  );
+
+  if (regResult) {
+    req.flash("notice", `The item was succesfully added to favorites.`);
+    const data = await invModel.getDetailsByInvId(inv_id);
+    const grid = await utilities.buildDetailsGrid(data);
+    const invName = `${data[0].inv_year} ${data[0].inv_make} ${data[0].inv_model}`;
+    res.render("./inventory/details", {
+      title: invName,
+      nav,
+      grid,
+      errors: null,
+    });
+  } else {
+    req.flash("notice", `Sorry, adding this item to favorites failed.`);
+
+    const data = await invModel.getDetailsByInvId(inv_id);
+    item = data[0];
+    let nav = await utilities.getNav();
+
+    res.status(501).render("./inventory/add-favorite", {
+      title: "Add favorite vehicle",
+      nav,
+      inv_id: inv_id,
+      inv_make: item.inv_make,
+      inv_model: item.inv_model,
+      inv_image: item.inv_image,
+      favorite_note: favorite_note,
+      account_id: account_id,
+      errors: null,
     });
   }
 };

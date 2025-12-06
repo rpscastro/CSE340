@@ -1,6 +1,7 @@
 const utilities = require(".");
 const { body, validationResult } = require("express-validator");
 const validate = {};
+invModel = require("../models/inventory-model");
 
 /*  **********************************
  *  Classification Data Validation Rules
@@ -160,7 +161,6 @@ validate.checkInventoryData = async (req, res, next) => {
   next();
 };
 
-
 /* ******************************
  * Check data and return errors or continue to update inventory
  * ***************************** */
@@ -205,5 +205,47 @@ validate.checkUpdateData = async (req, res, next) => {
   next();
 };
 
+/*  **********************************
+ *  Favorite Data Validation Rules
+ * ********************************* */
+validate.addFavoriteRules = () => {
+  return [
+    // firstname is required and must be string
+    body("favorite_note")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("The note text is required."), // on error this message is sent.
+  ];
+};
+
+/* ******************************
+ * Check data and return errors or continue to classification
+ * ***************************** */
+validate.checkFavoriteData = async (req, res, next) => {
+  const { account_id, inv_id, favorite_note } = req.body;
+  let errors = [];
+  errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    const data = await invModel.getDetailsByInvId(inv_id);
+    item = data[0];
+
+    res.render("inventory/add-favorite", {
+      errors,
+      title: "Add favorite vehicle",
+      nav,
+      inv_id: inv_id,
+      inv_make: item.inv_make,
+      inv_model: item.inv_model,
+      inv_image: item.inv_image,
+      favorite_note: favorite_note,
+      account_id: account_id,
+    });
+    return;
+  }
+  next();
+};
 
 module.exports = validate;

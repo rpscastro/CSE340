@@ -1,0 +1,44 @@
+<h1>
+    <%= title %>
+</h1>
+<%- messages() %>
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+
+            <div class="add-favorite-container">
+                <form class="add-favorite-form" action="/inv/add-favorite" method="post">
+
+
+                    <div class="vehicle-image">
+                        <picture>
+                            <source media="(min-width: 700px)" srcset="<%= locals.inv_image %>">
+                            <img src="<%= locals.inv_image %>" loading="lazy"
+                                alt="<%= locals.inv_make %> <%= locals.inv_model %> on CSE Motors">
+                        </picture>
+                    </div>
+                    <h2>
+                        <%= locals.inv_make %>
+                            <%= locals.inv_model %>
+                    </h2>
+
+                    <label for="favorite_note">Note</label>
+
+                    <textarea id="favorite_note" name="favorite_note" required><%= (locals.favorite_note || '').trim() %></textarea>
+                    <p class="field-requirements">
+                        * This field is required.
+                    </p>
+                    <input type="hidden" name="inv_id" value="<%=
+                            locals.inv_id %>" />
+                    <input type="hidden" name="account_id" value="<%=
+                                                locals.account_id %>" />
+
+                    <button type="submit">Add Favorite</button>
+                </form>
+            </div>
