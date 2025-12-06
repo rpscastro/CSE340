@@ -156,6 +156,57 @@ async function deleteInventory(inv_id) {
 }
 
 
+/* ***************************
+ *  Get all inventory items and classification_name by classification_id
+ * ************************** */
+async function getFavoritesList(account_id) {
+  try {
+    const data = await pool.query(
+      `SELECT i.*, f.favorite_note FROM public.inventory AS i 
+      JOIN public.favorites AS f 
+      ON i.inv_id = f.inv_id 
+      WHERE f.account_id = $1`,
+      [account_id]
+    );
+    return data.rows;
+  } catch (error) {
+    console.error("getFavoritesList error " + error);
+  }
+}
+
+
+/* *****************************
+ *   Adding a new favorite item
+ * *************************** */
+async function addFavorite(account_id, inv_id, favorite_note) {
+  try {
+    const sql =
+      "INSERT INTO favorites (account_id, inv_id, favorite_note) VALUES ($1, $2, $3) RETURNING *";
+    return await pool.query(sql, [account_id, inv_id, favorite_note]);
+  } catch (error) {
+    return error.message;
+  }
+}
+
+
+/* *****************************
+ *   Check if favorite item already exists
+ * *************************** */
+async function checkFavoriteExists(account_id, inv_id) {
+  try {
+    const sql =
+      "SELECT * FROM favorites WHERE account_id = $1 AND inv_id = $2";
+    const data = await pool.query(sql, [account_id, inv_id]);
+    return data.rows.length > 0;
+  } catch (error) {
+    console.error("model error: " + error);
+  } 
+}
+
+
+
+
+
 
 module.exports = {
   getClassifications,
@@ -165,4 +216,7 @@ module.exports = {
   addInventory,
   updateInventory,
   deleteInventory,
+  getFavoritesList,
+  addFavorite,
+  checkFavoriteExists,
 };

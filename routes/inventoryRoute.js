@@ -92,4 +92,28 @@ router.post(
   utilities.handleErrors(invController.deleteInventory)
 );
 
+
+// Route to show favorites view
+router.get(
+  "/favorites",
+  utilities.checkLogin,
+  utilities.handleErrors(invController.buildFavoritesView)
+);
+
+// Route to add an item to favorites
+router.get(
+  "/add-favorite/:invId",
+  utilities.checkLogin,
+  utilities.handleErrors(invController.addToFavoritesPage)
+);
+
+// Route to add an item to favorites
+router.post(
+  "/add-favorite",
+  utilities.checkLogin,
+  invValidate.addFavoriteRules(),
+  invValidate.checkFavoriteData,
+  utilities.handleErrors(invController.addToFavoritesProcess)
+);
+
 module.exports = router;

@@ -5,8 +5,16 @@
     </h1>
     <% } else { res.redirect('/') } %>
 
-        <!-- Message Block -->
-        <%# messages() %>
+    <%- messages() %>
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
 
             <!-- Details Item Display -->
             <%- grid %>

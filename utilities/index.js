@@ -74,7 +74,7 @@ Util.buildClassificationGrid = async function (data) {
     });
     grid += "</ul>";
   } else {
-    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>';
+    grid = '<p class="notice">Sorry, no matching vehicles could be found.</p>';
   }
   return grid;
 };
@@ -115,6 +115,11 @@ Util.buildDetailsGrid = async function (data) {
     ' <p><span class="label">Miles: </span>' +
     new Intl.NumberFormat("en-US").format(vehicle.inv_miles) +
     "</p>";
+  grid +=
+    '<a href="../../inv/add-favorite/' +
+    vehicle.inv_id +
+    '" title="Add to favorites list">Add to favorites</a>';
+
   grid += "</div>";
   grid += "</div>";
 
@@ -202,6 +207,56 @@ Util.checkAccountType = (req, res, next) => {
 
   req.flash("notice", "Insufficient privileges to manage inventory.");
   return res.redirect("/account/login");
+};
+
+/* **************************************
+ * Build the favorites view HTML
+ * ************************************ */
+Util.buildFavoritesGrid = async function (data) {
+  let grid;
+  if (data.length > 0) {
+    grid = '<ul id="inv-display">';
+    data.forEach((vehicle) => {
+      grid += "<li>";
+      grid +=
+        '<a href="../../inv/detail/' +
+        vehicle.inv_id +
+        '" title="View ' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        'details"><img src="' +
+        vehicle.inv_thumbnail +
+        '" alt="' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        ' on CSE Motors" /></a>';
+      grid += '<div class="namePrice">';
+      grid += "<hr />";
+      grid += "<h2>";
+      grid +=
+        '<a href="../../inv/detail/' +
+        vehicle.inv_id +
+        '" title="View ' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        ' details">' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        "</a>";
+      grid += "</h2>";
+      grid += "<span>" + vehicle.favorite_note + "</span>";
+      grid += "</div>";
+      grid += "</li>";
+    });
+    grid += "</ul>";
+  } else {
+    grid = '<p class="notice">Your favorite list is empty!</p>';
+  }
+  return grid;
 };
 
 module.exports = Util;
